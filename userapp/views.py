@@ -449,14 +449,14 @@ def changePassword(request):
 
 
 
-def editProfile(request, id=id):
+def editProfile(request, id):
     if not request.user.is_authenticated:
         return redirect(signin)
     else:
-        # userprofile     = get_object_or_404(UserProfile,user=request.user)
         userprofile     = UserProfile.objects.get(id=id)
-        # userprofile     = UserProfile.objects.filter(id=id, user=request.user).first()
-        
+    
+        print(userprofile)
+        print("eeeeeee")
        
         if request.method == "POST":
             user_form           = UserForm(request.POST, instance=request.user)

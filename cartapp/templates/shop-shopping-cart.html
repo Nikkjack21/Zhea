@@ -165,7 +165,7 @@
                   <tr>
                     <th class="goods-page-image">Image</th>
                     <th class="goods-page-description">Description</th>
-                    <th class="goods-page-ref-no">Ref No</th>
+                    <th colspan="1" class="goods-page-ref-no"></th>
                     <th class="goods-page-quantity">Quantity</th>
                     <th class="goods-page-price">Unit price</th>
                     <th class="goods-page-total" colspan="2">Total</th>
@@ -181,7 +181,7 @@
                       <em>More info is here</em>
                     </td>
                     <td class="goods-page-ref-no">
-                      javc2133
+                     
                     </td>
                     <td class="goods-page-quantity">
                       <!-- <div class="product-quantity">
@@ -194,7 +194,7 @@
                         <div class="quantity-plus">
                           <a href="{% url 'remove_cart' cart_item.product.id %}" class="quantity__minus"><span>-</span></a>
                           <input name="quantity" type="" id="{{cart_item.id}}" class="quantity__input" value="{{cart_item.quantity}}">
-                          <button type="submit" onclick="add({{cart_item.id}})" class="quantity__plus"><span>+</span></button>
+                          <a href="{% url 'add_cart' cart_item.product.id %}" class="quantity__plus"><span>+</span></a>
                         </div>
                         
                       </div> 
@@ -452,63 +452,7 @@
 
 
 
-<script>
-  function getCookie(name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-          const cookies = document.cookie.split(';');
-          for (let i = 0; i < cookies.length; i++) {
-              const cookie = cookies[i].trim();
-              // Does this cookie string begin with the name we want?
-              if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                  break;
-              }
-          }
-      }
-      return cookieValue;
-  }
-  var csrftoken = getCookie('csrftoken');
-  
-  function add(id)
-  {
-      
-      sendData();
-      console.log('hello')
-      function sendData(){
-          console.log('hello')
-          fetch('/cart/add_cart_ajax/',{
-              method : "POST",
-              headers : {
-                  "Content-type" : "application/jason",
-                  "X-CSRFToken": csrftoken,
-              },
-              body:JSON.stringify({
-                  
-                  id: id,
 
-                  
-              }),
-          })
-          .then(response => response.json())
-          .then((data) => { 
-              document.getElementById(id).value = data.quantity;
-              
-      });
-  }
-
-      // Replace the above to show a success message within this page, e.g.
-      // const element = document.getElementById('paypal-button-container');
-      // element.innerHTML = '';
-      // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-      // Or go to another URL:  actions.redirect('thank_you.html');
- 
-}
-  
-
-
-
-</script>
 
 
 

@@ -68,7 +68,7 @@
           <ul class="breadcrumb">
               <li><a href="index.html">Home</a></li>
               
-              <li class="active">My Account </li>
+              <li class="active">EDIT Account </li>
           </ul>
           <!-- BEGIN SIDEBAR & CONTENT -->
           <div class="row margin-bottom-40">
@@ -80,7 +80,6 @@
                 <li class="list-group-item clearfix"><a href="{%url 'user_address'%}"><i class="fa fa-angle-right"></i> Addresses</a></li>
                 <li class="list-group-item clearfix"><a href="{%url 'ref_code'%}"><i class="fa fa-angle-right"></i> Refferal code</a></li>
                 <li class="list-group-item clearfix"><a href="{%url 'my_wallet'%}"><i class="fa fa-angle-right"></i> Wallet</a></li>
-                <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Wish list</a></li>
     
               </ul>
             </div>
@@ -94,18 +93,15 @@
                 <ul>
                   <li><a href="{% url 'edit_profile' user.id %}">Edit your account information</a></li>
                   <li><a href="{% url 'change_password' %}">Change your password</a></li>
-                  <li><a href="javascript:;">Modify your address book entries</a></li>
-                  <li><a href="javascript:;">Modify your wish list</a></li>
+
                 </ul>
                 <hr>
   
                 <h3>My Orders</h3>
                 <ul>
                   <li><a href="{% url 'my_orders' %}">View your order history</a></li>
-                  <li><a href="javascript:;">Downloads</a></li>
-                  <li><a href="javascript:;">Your Reward Points</a></li>
-                  <li><a href="javascript:;">View your return requests</a></li>
-                  <li><a href="javascript:;">Your Transactions</a></li>
+
+                  <!-- <li><a href="javascript:;">View your return requests</a></li> -->
                 </ul>
               </div>
             </div>
@@ -277,7 +273,6 @@
           });
       </script>
   
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
     
   
@@ -291,14 +286,6 @@
       </script>
   
   
-      <script>
-        {% if message.tags == 'info' %}
-        alertify.set('notifier','position', 'top-center');
-      {% for msgs in messages %}
-       alertify.info('{{ msgs }}');
-      {% endfor %}
-      {% endif %}
-      </script>
   
   </body>
   <!-- END BODY -->
