@@ -12,8 +12,7 @@
                 <div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
                       <li><a href="{% url 'my_account' %}">My Account</a></li>
-                      <li><a href=" #">My Wishlist</a></li>
-                      <li><a href="cart/">Checkout</a></li>
+                      <li><a href="{% url 'checkout' %}">Checkout</a></li>
                       {% if user.is_authenticated %}
                       <li>Welcome, {{user.username}}</li>
                     <li><a href="{% url 'signout'%}">Log Out</a></li>
@@ -68,7 +67,7 @@
 
               <div class="text-right">
                 <a href="{% url 'cart' %}" class="btn btn-default">View Cart</a>
-                <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+                <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
               </div>
             </div>
           </div>            
