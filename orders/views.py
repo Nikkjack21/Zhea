@@ -657,7 +657,7 @@ def buy_now_place_order(request, id, deduction=0, final_price=0,coupon=None):
             # order id of newly created order.
         
             razorpay_order_id = razorpay_order['id']
-            callback_url = 'http://iamjacksonpatrick.com/orders/razor_success/'   
+            callback_url = 'https://iamjacksonpatrick.com/orders/razor_success/'   
 
             context={
                 'order_data':order_data,
