@@ -449,25 +449,27 @@ def changePassword(request):
 
 
 def editProfile(request, id):
-    if not request.user.is_authenticated:
-        return redirect(signin)
-    else:
+ 
+    # userprofile     = get_object_or_404(UserProfile, user=request.user)
+    try:
         userprofile     = UserProfile.objects.get(id=id)
+    except:
+        userprofile     = UserProfile.objects.create(user=request.user)
+
+    print(userprofile)
+    print("eeeeeee")
     
-        print(userprofile)
-        print("eeeeeee")
-       
-        if request.method == "POST":
-            user_form           = UserForm(request.POST, instance=request.user)
-            profile_form        = UserProfileForm(request.POST, request.FILES, instance=userprofile)
-            if user_form.is_valid() and profile_form.is_valid():
-                user_form.save()
-                profile_form.save()
-                messages.success(request, "Succesfully Updated")
-                return redirect('edit_profile', id)
-        else:
-            user_form = UserForm(instance=request.user)
-            profile_form = UserProfileForm(instance=userprofile) 
+    if request.method == "POST":
+        user_form           = UserForm(request.POST, instance=request.user)
+        profile_form        = UserProfileForm(request.POST, request.FILES, instance=userprofile)
+        if user_form.is_valid() and profile_form.is_valid():        
+            user_form.save()
+            profile_form.save()
+            messages.success(request, "Succesfully Updated")
+            return redirect('edit_profile', id)
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = UserProfileForm(instance=userprofile) 
     adr = UserProfile.objects.get(id=id)
     context = {
         'user_form': user_form,
