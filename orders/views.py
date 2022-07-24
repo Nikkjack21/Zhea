@@ -275,7 +275,8 @@ def place_order(request, total=0, quantity=0, coups=None, coupon=None):
         
             razorpay_order_id = razorpay_order['id']
  
-            callback_url = 'http://iamjacksonpatrick.com/orders/razor_success/'   
+            callback_url = 'https://iamjacksonpatrick.com/orders/razor_success/'   
+            
 
 
 
