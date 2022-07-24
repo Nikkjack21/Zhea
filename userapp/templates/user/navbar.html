@@ -54,7 +54,7 @@
                   <span class="cart-content-count">x {{cart_item.quantity}}</span>
                   <strong><a href="{{product.get_url}}">{{cart_item.product.product_name}}</a></strong>
                   <em>₹{{cart_item.product.price}}</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+                  <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="del-goods">&nbsp;</a>
                 </li>
                 {% endfor %}
 

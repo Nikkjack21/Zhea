@@ -1,5 +1,6 @@
 
 import datetime
+from tabnanny import check
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -168,6 +169,9 @@ def checkout(request, total=0, quantity=0, cart_items=None, coupon=None, final_p
     grand_total=0
     profile  = Address.objects.filter(user=request.user).order_by('id')
     print(profile)
+    check_cart   = CartItem.objects.filter(user=request.user, is_active=True)
+    if not check_cart:
+        return redirect('cart')
 
     try:
         if request.user.is_authenticated:
