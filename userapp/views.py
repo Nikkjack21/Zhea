@@ -277,7 +277,7 @@ def otp_verification(request,phone_number):
            
         
         if verification_check.status == "approved":
-            messages.success(request,"OTP verified successfully.")
+            # messages.success(request,"OTP verified successfully.")
             user = Account.objects.get(username=user_name)
             user.is_active = True   
             user.phone_number = phone_number        
@@ -436,7 +436,6 @@ def changePassword(request):
             if success:
                 user.set_password(new_password)
                 user.save()
-                messages.success(request, 'password updated successfully')
                 return redirect('change_password')
             else:
                 messages.error(request, 'Please enter valid password')
